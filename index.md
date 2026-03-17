@@ -13,8 +13,8 @@ title: Home
       <h2 class="hero-subtitle">PhD Student in Engineering Sciences – Fluid Mechanics & Physics<br/>IUSTI Laboratory, Aix-Marseille University</h2>
       
       <p class="hero-bio">
-        I am a PhD student specializing in <strong>numerical and experimental studies of confined fires</strong>, with applications to firefighter interventions. 
-        My research focuses on the <strong>prediction of fire curves</strong> using advanced <strong>data assimilation techniques</strong> and computational modeling, combining fluid mechanics, heat transfer, and applied mathematics.
+        I am a PhD student specializing in numerical and experimental studies of confined fires, with applications to firefighter interventions. 
+        My research focuses on the prediction of fire curves using advanced data assimilation techniques and computational modeling, combining fluid mechanics, heat transfer, and applied mathematics.
       </p>
       
       <p class="hero-bio">
