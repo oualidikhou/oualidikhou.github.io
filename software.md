@@ -4,28 +4,44 @@ title: Software
 ---
 
 <section>
-  <h1 class="gradient-text">Open Source & Software</h1>
+  <h1 class="gradient-text">Software & Technical Skills</h1>
   <p class="hero-bio">
-    I am a strong advocate for open-source research. Here are some of the tools and libraries I have developed or contribute to.
+    My research and engineering work involves a range of computational, modeling, and design tools. Here is an overview of the software I use in my research and projects.
   </p>
 
-  <div style="margin-top: 2rem;">
-    <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1.5rem;">
-      <i class="fa-brands fa-github" style="font-size: 2.5rem; color: var(--text-primary);"></i>
-      <div>
-        <h3 style="margin-bottom: 0.2rem; color: var(--accent-blue);">FluidSim-Toolkit</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary);">A Python-based library for 2D fluid dynamics visualization and analysis.</p>
-        <a href="#" style="font-size: 0.85rem; margin-top: 0.5rem; display: inline-block;">View on GitHub →</a>
-      </div>
+  <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+
+    <!-- Programming & Data Analysis -->
+    <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+      <h3 style="margin-bottom: 0.5rem; color: var(--accent-blue);">Programming & Data Processing</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        C++, MATLAB, Maxima — used for numerical simulations, data analysis, and algorithm development.
+      </p>
     </div>
 
-    <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1.5rem;">
-      <i class="fa-solid fa-code-branch" style="font-size: 2.5rem; color: var(--accent-purple);"></i>
-      <div>
-        <h3 style="margin-bottom: 0.2rem; color: var(--accent-blue);">Numerical-Solver-X</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary);">C++ implementation of high-order numerical methods for heat transfer problems.</p>
-        <a href="#" style="font-size: 0.85rem; margin-top: 0.5rem; display: inline-block;">View on GitHub →</a>
-      </div>
+    <!-- Fire Modeling & Evacuation -->
+    <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+      <h3 style="margin-bottom: 0.5rem; color: var(--accent-blue);">Fire Modeling & Evacuation</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        CFAST, FDS, PyroSim, Pathfinder — tools for fire and smoke simulation, and evacuation modeling.
+      </p>
     </div>
+
+    <!-- Structural Behavior -->
+    <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+      <h3 style="margin-bottom: 0.5rem; color: var(--accent-blue);">Structural Behavior</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        Safir — modeling and analyzing structural response under fire and heat conditions.
+      </p>
+    </div>
+
+    <!-- Mechanical Design -->
+    <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+      <h3 style="margin-bottom: 0.5rem; color: var(--accent-blue);">Mechanical Design</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        CATIA, SolidWorks — CAD software for mechanical part design and engineering projects.
+      </p>
+    </div>
+
   </div>
 </section>
