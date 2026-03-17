@@ -12,20 +12,14 @@ title: Talks
   <div style="margin-top: 2rem;">
     
     <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border); margin-bottom: 1.5rem;">
-      <h3 style="margin-bottom: 0.5rem; color: var(--accent-blue);">Numerical and Experimental Modeling of Confined Fires</h3>
+      <h3 style="margin-bottom: 0.5rem; color: var(--accent-blue);">Application of Incremental 4D-Var for Real-Time Prediction of a Fire Enclosure Oscillatory Dynamics</h3>
       <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
-        <i class="fa fa-calendar" style="margin-right: 8px;"></i> June 2025 • International Fire Safety Symposium
+        <i class="fa fa-calendar" style="margin-right: 8px;"></i> October 2024 • European Symposium on Fire Safety Science
       </p>
-      <p>Presented methods for predicting fire curves in confined spaces using CFD simulations and data assimilation techniques, with implications for firefighter safety.</p>
+      <p>Presented research on real-time prediction of oscillatory dynamics in enclosure fires using Incremental 4D-Var data assimilation combined with a simplified well-mixed reactor model and experimental data from the literature.</p>
     </div>
 
-    <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border); margin-bottom: 1.5rem;">
-      <h3 style="margin-bottom: 0.5rem; color: var(--accent-blue);">Data Assimilation Techniques for Real-Time Fire Prediction</h3>
-      <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
-        <i class="fa fa-calendar" style="margin-right: 8px;"></i> March 2024 • University Research Seminar
-      </p>
-      <p>Discussed the application of incremental 4D-Var and numerical solvers for real-time prediction of fire enclosure dynamics.</p>
-    </div>
+
 
   </div>
 </section>
