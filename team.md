@@ -18,7 +18,7 @@ title: Team
       </div>
       <div style="padding: 1rem; border-left: 3px solid var(--accent-purple); background: rgba(255,255,255,0.02);">
         <strong>Dr. Kevin Varrall</strong><br>
-        <span style="font-size: 0.9rem; color: var(--text-secondary);">Associate Professor, AMU</span>
+        <span style="font-size: 0.9rem; color: var(--text-secondary);">Assistant Professor, ISUTI</span>
       </div>
     </div>
   </div>
