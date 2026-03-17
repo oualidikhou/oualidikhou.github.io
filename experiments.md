@@ -16,7 +16,7 @@ title: Experimentations
       <div class="image-container" style="height: 250px; overflow: hidden; background: #1a1a1a; display: flex; align-items: center; justify-content: center; position: relative;">
         <!-- Replace 'assets/img/photo1.jpg' with your actual image path -->
         <img src="assets/img/entrainement_1.png" alt="Backdraft phenomenon in firefighter training" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
-        <span style="position: absolute; color: white; font-size: 0.8rem; opacity: 0.5;">Oualid IKHOU</span>
+        <span style="position: absolute; color: white; font-size: 0.8rem; opacity: 0.5;">OUALID IKHOU</span>
       </div>
       <div style="padding: 1.5rem;">
         <!-- <span style="font-size: 0.75rem; color: var(--accent-blue); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Research • Experiment</span> -->
