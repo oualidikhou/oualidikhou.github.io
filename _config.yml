@@ -24,7 +24,7 @@ nav_pages:
   - name: software
   - name: team
   - name: teaching
-  - name: blogs
+  - name: experiments
 
 markdown: kramdown
 highlighter: rouge
