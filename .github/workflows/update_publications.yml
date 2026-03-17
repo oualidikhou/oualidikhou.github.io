@@ -1,0 +1,29 @@
+name: Update Scholar Publications
+
+on:
+  schedule:
+    - cron: "0 2 * * *"   # chaque jour
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Fetch RSS
+        run: |
+          curl "https://scholar.googleusercontent.com/citations?user=n26K8XoAAAAJ&hl=en&view_op=list_works&sortby=pubdate&output=rss" -o scholar.xml
+
+      - name: Convert to JSON
+        run: |
+          python3 scripts/rss_to_json.py
+
+      - name: Commit update
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add _data/publications.json
+          git commit -m "Update publications" || echo "No changes"
+          git push
