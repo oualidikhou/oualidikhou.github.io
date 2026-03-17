@@ -1,0 +1,30 @@
+title: Oualid IKHOU
+email: oualid.ikhou@univ-amu.fr
+description: Personal academic website presenting the research and academic activities of PhD researcher Oualid Ikhou.
+baseurl: ""
+url: "https://oualidikhou.github.io"
+
+affiliation: >
+  PhD Researcher<br/>
+  Aix-Marseille University<br/>
+  IUSTI Laboratory
+
+location: >
+  Aix-Marseille Université<br/>
+  Marseille, France
+
+contact: >
+  <a href="mailto:oualid.ikhou@univ-amu.fr" target="_blank"><i class="fa fa-envelope fa-1x"></i> Contact me via email</a>
+
+nav_pages:
+  - name: about
+  - name: research
+  - name: talks
+  - name: software
+  - name: team
+  - name: teaching
+  - name: blogs
+
+markdown: kramdown
+highlighter: rouge
+lsi: false
