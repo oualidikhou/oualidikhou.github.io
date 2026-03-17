@@ -19,7 +19,7 @@ title: Experimentations
         <span style="position: absolute; color: white; font-size: 0.8rem; opacity: 0.5;">Oualid IKHOU</span>
       </div>
       <div style="padding: 1.5rem;">
-        <span style="font-size: 0.75rem; color: var(--accent-blue); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Research • Experiment</span>
+        <!-- <span style="font-size: 0.75rem; color: var(--accent-blue); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Research • Experiment</span> -->
         <h3 style="margin: 0.5rem 0; color: var(--text-primary);">Backdraft Phenomenon</h3>
         <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
           Visualization of the backdraft phenomenon during a firefighter training exercise in a controlled compartment, highlighting rapid flame propagation and smoke ignition.
