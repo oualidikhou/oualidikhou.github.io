@@ -47,7 +47,8 @@ title: Teaching
     <div>
       <h3 style="color: var(--accent-green);"><i class="fa fa-users" style="margin-right: 10px;"></i> Mentorship</h3>
       <p>
-        I mentor Bachelor and Master students on research projects, focusing on numerical modeling, data analysis, and scientific writing. I emphasize individualized guidance and collaborative learning to support the students’ development.
+        I mentor Bachelor and Master students on research projects, including both numerical and experimental studies. 
+        I guide them through numerical modeling, data analysis, experimental design, and scientific writing, emphasizing individualized mentorship and collaborative learning to support their development.
       </p>
     </div>
 
