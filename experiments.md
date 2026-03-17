@@ -6,7 +6,7 @@ title: Experimentations
 <section>
   <h1 class="gradient-text">Experimental Gallery</h1>
   <p class="hero-bio">
-    Visual results from my research on fire dynamics, confined fires, and numerical validation.
+    A selection of images showcasing my experimental work across fire safety, fluid mechanics, and thermal studies.
   </p>
 
   <div class="experiments-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem;">
