@@ -12,13 +12,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
       - name: Fetch RSS
         run: |
           curl "https://scholar.googleusercontent.com/citations?user=n26K8XoAAAAJ&hl=en&view_op=list_works&sortby=pubdate&output=rss" -o scholar.xml
 
-      - name: Convert to JSON
+      - name: Convert RSS to JSON
         run: |
-          python3 scripts/rss_to_json.py
+          python3 scripts/rss_to_json.py || echo "RSS parsing failed, continuing"
 
       - name: Commit update
         run: |
