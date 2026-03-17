@@ -10,13 +10,16 @@ title: Home
     </div>
     <div class="hero-content">
       <h1 class="hero-title"><span class="gradient-text">Oualid IKHOU</span></h1>
-      <h2 class="hero-subtitle">PhD Researcher at Aix-Marseille University, IUSTI Laboratory</h2>
+      <h2 class="hero-subtitle">PhD Student in Engineering Sciences – Fluid Mechanics & Physics<br/>IUSTI Laboratory, Aix-Marseille University</h2>
       
       <p class="hero-bio">
-        I am a passionate researcher specializing in applied mathematics and computational modeling. My work focuses on designing innovative algorithms to solve complex engineering challenges, particularly in fluid dynamics and numerical simulations.
+        I am a PhD student specializing in <strong>numerical and experimental studies of confined fires</strong>, with applications to firefighter interventions. 
+        My research focuses on the <strong>prediction of fire curves</strong> using advanced <strong>data assimilation techniques</strong> and computational modeling, combining fluid mechanics, heat transfer, and applied mathematics.
       </p>
+      
       <p class="hero-bio">
-        I enjoy collaborating with interdisciplinary teams, mentoring students, and contributing to open-source software. Beyond research, I am dedicated to sharing insights through talks and publications.
+        I am passionate about interdisciplinary collaboration, mentoring students, and contributing to scientific publications. 
+        Beyond research, I aim to share insights through talks, open-source software, and applied projects that enhance fire safety and emergency response.
       </p>
 
       <div class="social-links">
