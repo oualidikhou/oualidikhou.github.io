@@ -6,20 +6,20 @@ title: About
 <section>
   <h1 class="gradient-text">About Me</h1>
   <p class="hero-bio">
-    I am a PhD student in <strong>Engineering Sciences – Fluid Mechanics and Physics</strong> at the <strong>IUSTI Laboratory</strong>, Aix-Marseille University. 
-    My research focuses on the <strong>numerical and experimental study of confined fires</strong>, with direct applications for firefighter interventions. 
-    I am particularly interested in the <strong>prediction of fire curves</strong> using advanced <strong>data assimilation techniques</strong> and numerical modeling, aiming to improve operational safety and efficiency.
+    I am a PhD student in Engineering Sciences – Fluid Mechanics and Physics at the IUSTI Laboratory, Aix-Marseille University. 
+    My research focuses on the numerical and experimental study of confined fires, with direct applications for firefighter interventions. 
+    I am particularly interested in the prediction of fire curves using advanced data assimilation techniques and numerical modeling, aiming to improve operational safety and efficiency.
   </p>
   
   <div style="margin-top: 2rem;">
     <h3 style="color: var(--accent-blue);">Education</h3>
     <ul style="list-style: none; padding: 0;">
       <li style="margin-bottom: 1rem; padding-left: 1.5rem; border-left: 2px solid var(--accent-purple);">
-        <strong>PhD in Engineering Sciences – Fluid Mechanics and Physics</strong><br>
+        PhD in Engineering Sciences – Fluid Mechanics and Physics<br>
         Aix-Marseille University • 2023 — Present
       </li>
       <li style="margin-bottom: 1rem; padding-left: 1.5rem; border-left: 2px solid var(--glass-border);">
-        <strong>Master's Degree in Fire Science and Fire Safety Engineering</strong><br>
+        Master's Degree in Fire Science and Fire Safety Engineering<br>
         Aix-Marseille University • 2021 — 2023
       </li>
     </ul>
