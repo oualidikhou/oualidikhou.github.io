@@ -38,3 +38,25 @@ title: Home
     </div>
   </div>
 </section>
+<!-- CV Modal -->
+<div id="cv-modal" class="cv-modal">
+  <div class="cv-header">
+    <button id="close-cv" class="cv-close">✖</button>
+    <a href="{{ site.baseurl }}/assets/cv/Oualid_IKHOU_CV.pdf" download class="cv-download">
+      ⬇ Download CV
+    </a>
+  </div>
+  <iframe 
+    src="{{ site.baseurl }}/assets/cv/Oualid_IKHOU_CV.pdf"
+    class="cv-frame">
+  </iframe>
+</div>
+
+<script>
+const openCV = document.getElementById("open-cv");
+const closeCV = document.getElementById("close-cv");
+const modal = document.getElementById("cv-modal");
+
+openCV.onclick = () => { modal.style.display = "flex"; }
+closeCV.onclick = () => { modal.style.display = "none"; }
+</script>
