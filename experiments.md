@@ -11,22 +11,6 @@ title: Experimentations
 
   <div class="experiments-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem;">
     
-    <!-- Experiment 1 -->
-    <div class="experiment-card" style="background: var(--glass-bg); border-radius: 16px; border: 1px solid var(--glass-border); overflow: hidden; transition: transform 0.3s ease;">
-      <div class="image-container" style="height: 250px; overflow: hidden; background: #1a1a1a; display: flex; align-items: center; justify-content: center; position: relative;">
-        <!-- Replace 'assets/img/photo1.jpg' with your actual image path -->
-        <img src="assets/img/entrainement_1.png" alt="Backdraft phenomenon in firefighter training" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
-        <span style="position: absolute; color: white; font-size: 0.8rem; opacity: 0.5;">OUALID IKHOU</span>
-      </div>
-      <div style="padding: 1.5rem;">
-        <!-- <span style="font-size: 0.75rem; color: var(--accent-blue); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Research • Experiment</span> -->
-        <h3 style="margin: 0.5rem 0; color: var(--text-primary);">Backdraft Phenomenon</h3>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
-          Visualization of the backdraft phenomenon during a firefighter training exercise in a controlled compartment, highlighting rapid flame propagation and smoke ignition.
-        </p>
-      </div>
-    </div>
-    
     <!-- Experiment 2 -->
     <div class="experiment-card" style="background: var(--glass-bg); border-radius: 16px; border: 1px solid var(--glass-border); overflow: hidden; transition: transform 0.3s ease;">
       <div class="image-container" style="height: 250px; overflow: hidden; background: #1a1a1a; display: flex; align-items: center; justify-content: center; position: relative;">
@@ -77,7 +61,7 @@ title: Experimentations
     
     ```
     <!-- Replace with your image -->
-    <img src="assets/img/wood_fire_training_model.png" alt="Wood flame experiment in a scaled firefighter training compartment" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+    <img src="assets/img/img2.jpg" alt="Wood flame experiment in a scaled firefighter training compartment" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
     
     <span style="position: absolute; color: white; font-size: 0.8rem; opacity: 0.5;">OUALID IKHOU</span>
     ```
@@ -100,6 +84,23 @@ title: Experimentations
     </p>
     ```
     
+    </div>
+    </div>
+
+  
+    <!-- Experiment 1 -->
+    <div class="experiment-card" style="background: var(--glass-bg); border-radius: 16px; border: 1px solid var(--glass-border); overflow: hidden; transition: transform 0.3s ease;">
+      <div class="image-container" style="height: 250px; overflow: hidden; background: #1a1a1a; display: flex; align-items: center; justify-content: center; position: relative;">
+        <!-- Replace 'assets/img/photo1.jpg' with your actual image path -->
+        <img src="assets/img/entrainement_1.png" alt="Backdraft phenomenon in firefighter training" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+        <span style="position: absolute; color: white; font-size: 0.8rem; opacity: 0.5;">OUALID IKHOU</span>
+      </div>
+      <div style="padding: 1.5rem;">
+        <!-- <span style="font-size: 0.75rem; color: var(--accent-blue); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Research • Experiment</span> -->
+        <h3 style="margin: 0.5rem 0; color: var(--text-primary);">Backdraft Phenomenon</h3>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+          Visualization of the backdraft phenomenon during a firefighter training exercise in a controlled compartment, highlighting rapid flame propagation and smoke ignition.
+        </p>
       </div>
     </div>
 
