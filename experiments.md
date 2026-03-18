@@ -59,18 +59,15 @@ title: Experimentations
     <div class="experiment-card" style="background: var(--glass-bg); border-radius: 16px; border: 1px solid var(--glass-border); overflow: hidden; transition: transform 0.3s ease;">
       <div class="image-container" style="height: 250px; overflow: hidden; background: #1a1a1a; display: flex; align-items: center; justify-content: center; position: relative;">
     
-    ```
     <!-- Replace with your image -->
     <img src="assets/img/img2.jpg" alt="Wood flame experiment in a scaled firefighter training compartment" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
     
     <span style="position: absolute; color: white; font-size: 0.8rem; opacity: 0.5;">OUALID IKHOU</span>
-    ```
     
       </div>
     
       <div style="padding: 1.5rem;">
     
-    ```
     <h3 style="margin: 0.5rem 0; color: var(--text-primary);">
       Wood Flame in a Scaled Firefighter Training Compartment
     </h3>
@@ -82,7 +79,6 @@ title: Experimentations
       allows the study of flame dynamics, smoke stratification, and fire development in 
       confined structures representative of firefighter training environments.
     </p>
-    ```
     
     </div>
     </div>
