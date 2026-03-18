@@ -23,13 +23,18 @@ title: Home
       </p>
 
       <div class="social-links">
-        <a href="mailto:oualid.ikhou@univ-amu.fr" class="contact-btn">
-          <i class="fa fa-envelope"></i> Contact Me
-        </a>
-        <a href="https://www.linkedin.com/in/oualid-ikhou-b40a1918a/" target="_blank" class="social-icon" title="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-      </div>
+      <a href="mailto:oualid.ikhou@univ-amu.fr" class="contact-btn">
+        <i class="fa fa-envelope"></i> Contact Me
+      </a>
+    
+      <a href="https://www.linkedin.com/in/oualid-ikhou-b40a1918a/" target="_blank" class="social-icon" title="LinkedIn">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+    
+      <!-- Bouton CV -->
+      <button class="social-icon" id="open-cv" title="CV">
+        <i class="fa fa-file"></i>
+      </button>
     </div>
   </div>
 </section>
