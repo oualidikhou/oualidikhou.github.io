@@ -42,7 +42,7 @@ title: Home
         </a>
 
         <!-- Bouton CV -->
-        <button class="social-icon" id="open-cv" title="CV">
+        <button class="social-icon" id="toggle-cv" title="CV">
           <i class="fa fa-file"></i>
         </button>
       </div>
@@ -50,40 +50,33 @@ title: Home
   </div>
 </section>
 
-<!-- CV Modal -->
-<div id="cv-modal" class="cv-modal">
-  <div class="cv-header">
-    <button id="close-cv" class="cv-close">✖</button>
-    <a href="{{ site.baseurl }}/assets/cv/Oualid_IKHOU_CV.pdf" download class="cv-download">
+<!-- Section CV (normale, bloc complet) -->
+<section id="cv-section" style="display:none; margin-top:3rem;">
+  <div class="cv-header" style="display:flex; justify-content: space-between; align-items:center; margin-bottom:1rem;">
+    <button id="close-cv" class="cv-close" style="padding:0.5rem 1rem; font-size:1rem;">✖ Close</button>
+    <a href="{{ site.baseurl }}/assets/cv/Oualid_IKHOU_CV.pdf" download class="cv-download" style="padding:0.5rem 1rem; font-size:1rem; background-color: var(--accent-blue); color:white; border-radius:6px; text-decoration:none;">
       ⬇ Download CV
     </a>
   </div>
   <iframe 
-    src="{{ site.baseurl }}/assets/cv/Oualid_IKHOU_CV.pdf"
-    class="cv-frame">
+    src="{{ site.baseurl }}/assets/cv/Oualid_IKHOU_CV.pdf" 
+    style="width:100%; height:800px; border:1px solid var(--glass-border); border-radius:8px;">
   </iframe>
-</div>
+</section>
 
-<!-- Script JS pour modal -->
 <script>
-  const openCV = document.getElementById("open-cv");
+  const toggleCV = document.getElementById("toggle-cv");
   const closeCV = document.getElementById("close-cv");
-  const modal = document.getElementById("cv-modal");
+  const cvSection = document.getElementById("cv-section");
 
-  // Ouvrir le modal
-  openCV.onclick = () => {
-    modal.style.display = "flex";
+  // Afficher la section CV
+  toggleCV.onclick = () => {
+    cvSection.style.display = "block";
+    cvSection.scrollIntoView({ behavior: "smooth" }); // scroll jusqu'au CV
   }
 
-  // Fermer le modal
+  // Fermer la section CV
   closeCV.onclick = () => {
-    modal.style.display = "none";
-  }
-
-  // Fermer le modal si clic en dehors du contenu
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
+    cvSection.style.display = "none";
   }
 </script>
