@@ -24,6 +24,10 @@
       <div class="nav-logo">
         <a href="{{ site.baseurl }}/" class="gradient-text">OI</a>
       </div>
+      <div class="search-container">
+        <span class="search-logo">MonLogo</span>
+        <input type="text" placeholder="Rechercher...">
+      </div>
       <ul>
         {% for page in site.nav_pages %}
           <li><a href="{{ site.baseurl }}/{{ page.name }}.html">{{ page.name | capitalize }}</a></li>
