@@ -377,5 +377,46 @@ footer a:hover {
      height:100%;
      border:none;
    }
+   /* ==============================
+      Search Bar avec Logo Texte
+   ============================== */
+   
+   .search-container {
+     position: relative;
+     width: 220px;
+   }
+   
+   .search-logo {
+     position: absolute;
+     left: 12px;
+     top: 50%;
+     transform: translateY(-50%);
+     font-weight: 800;
+     font-size: 0.85rem;
+     background: var(--gradient-primary);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     pointer-events: none;
+   }
+   
+   .search-container input {
+     width: 100%;
+     padding: 8px 10px 8px 80px;
+     border-radius: 20px;
+     border: 1px solid var(--glass-border);
+     background: rgba(255,255,255,0.05);
+     color: var(--text-primary);
+     outline: none;
+     transition: var(--transition-fast);
+   }
+   
+   .search-container input::placeholder {
+     color: var(--text-secondary);
+   }
+   
+   .search-container input:focus {
+     border-color: var(--accent-blue);
+     box-shadow: 0 0 10px rgba(59,130,246,0.3);
+   }
 }
 
