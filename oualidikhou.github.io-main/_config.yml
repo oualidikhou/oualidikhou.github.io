@@ -1,0 +1,30 @@
+title: Oualid IKHOU
+email: oualid.ikhou@univ-amu.fr
+description: Personal academic website showcasing the research, publications, and academic activities of PhD student Oualid Ikhou, specializing in numerical and experimental studies of confined fires.
+
+baseurl: ""
+url: "https://oualidikhou.github.io"
+
+affiliation: >
+  PhD Student in Engineering Sciences – Fluid Mechanics and Physics<br/>
+  Aix-Marseille University<br/>
+  IUSTI Laboratory
+
+location: >
+  Aix-Marseille University<br/>
+  Marseille, France
+
+contact: >
+  <a href="mailto:oualid.ikhou@univ-amu.fr" target="_blank"><i class="fa fa-envelope fa-1x"></i> Contact me via email</a>
+
+nav_pages:
+  - name: about
+  - name: research
+  - name: talks
+  - name: team
+  - name: teaching
+  - name: experiments
+
+markdown: kramdown
+highlighter: rouge
+lsi: false
