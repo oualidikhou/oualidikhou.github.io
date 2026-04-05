@@ -41,14 +41,6 @@ title: Home
           <i class="fa-brands fa-linkedin-in"></i>
         </a>
 
-        <a href="https://scholar.google.fr/citations?user=n26K8XoAAAAJ&hl=fr" target="_blank" class="social-icon" title="Google Scholar">
-          <i class="fa-brands fa-google-scholar"></i>
-        </a>
-
-        <a href="https://www.researchgate.net/profile/Ikhou-Oualid" target="_blank" class="social-icon" title="ResearchGate">
-          <i class="fa-brands fa-researchgate"></i>
-        </a>
-
         <!-- Bouton CV -->
         <button class="cv-badge" id="toggle-cv">
           <i class="fa fa-file-lines"></i> CV
