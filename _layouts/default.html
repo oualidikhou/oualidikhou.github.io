@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | PhD Researcher</title>
+  <title>{{ page.title }} | Oualid IKHOU</title>
+  <meta name="description" content="{{ site.description }}">
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- CSS principal -->
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
 
-  <!-- FontAwesome pour les icônes -->
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -22,7 +23,7 @@
   <nav>
     <div class="nav-container">
       <div class="nav-logo">
-        <a href="{{ site.baseurl }}/" class="gradient-text">OI</a>
+        <a href="{{ site.baseurl }}/">OI</a>
       </div>
       <ul>
         {% for page in site.nav_pages %}
@@ -37,22 +38,72 @@
     {{ content }}
   </main>
 
+  <!-- Scroll-to-top button -->
+  <button id="scroll-top" title="Back to top">
+    <i class="fa fa-chevron-up"></i>
+  </button>
+
   <!-- Pied de page -->
   <footer>
-    <div style="margin-bottom: 2rem;">
-      <h3 class="gradient-text">Oualid IKHOU</h3>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 class="gradient-text" style="font-size:1.3rem; margin-bottom:0.5rem;">Oualid IKHOU</h3>
       <p>{{ site.affiliation | markdownify | strip_html }}</p>
-      <p><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> {{ site.location | markdownify | strip_html }}</p>
+      <p><i class="fa-solid fa-location-dot" style="margin-right: 8px; color: var(--accent-blue);"></i>{{ site.location | markdownify | strip_html }}</p>
     </div>
-    
-    <div style="margin-bottom: 1rem;">
+
+    <div style="margin-bottom: 1.5rem;">
       {{ site.contact }}
     </div>
 
     <div class="copyright">
-      &copy; 2026 Oualid IKHOU. Designed with passion.
+      &copy; 2026 Oualid IKHOU — Built with passion &amp; Jekyll
     </div>
   </footer>
+
+  <script>
+    // Scroll-to-top
+    const scrollBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Skill bars animation via IntersectionObserver
+    const fills = document.querySelectorAll('.skill-fill[data-width]');
+    if (fills.length) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.style.width = e.target.dataset.width;
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      fills.forEach(f => obs.observe(f));
+    }
+
+    // Stat counters animation
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    if (counters.length) {
+      const cObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const target = +e.target.dataset.target;
+            const suffix = e.target.dataset.suffix || '';
+            let current = 0;
+            const step = Math.ceil(target / 40);
+            const timer = setInterval(() => {
+              current = Math.min(current + step, target);
+              e.target.textContent = current + suffix;
+              if (current >= target) clearInterval(timer);
+            }, 35);
+            cObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(c => cObs.observe(c));
+    }
+  </script>
 
 </body>
 </html>
