@@ -38,7 +38,7 @@ title: About
     <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:1rem;">
       <span class="tag" data-i18n="about.tag1">Numerical Fire Modeling</span>
       <span class="tag" data-i18n="about.tag2">Data Assimilation</span>
-      <span class="tag" data-i18n="about.tag3">Fire Safety and Intervention</span>
+      <span class="tag" data-i18n="about.tag3">Fire Safety </span>
       <span class="tag" data-i18n="about.tag4">Fluid Mechanics &amp; Heat Transfer</span>
     </div>
   </div>
