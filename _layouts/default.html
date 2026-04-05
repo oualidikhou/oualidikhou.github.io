@@ -6,103 +6,93 @@
   <title>{{ page.title }} | Oualid IKHOU</title>
   <meta name="description" content="{{ site.description }}">
 
-  <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- CSS principal -->
+  <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicon.svg">
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
-
-  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- Navigation Glassmorphism -->
-  <nav>
+  <nav id="navbar">
     <div class="nav-container">
       <div class="nav-logo">
         <a href="{{ site.baseurl }}/">OI</a>
       </div>
-      <ul>
-        {% for page in site.nav_pages %}
-          <li><a href="{{ site.baseurl }}/{{ page.name }}.html">{{ page.name | capitalize }}</a></li>
-        {% endfor %}
+
+      <!-- Hamburger (mobile) -->
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Links -->
+      <ul id="nav-menu">
+        <li><a href="{{ site.baseurl }}/about.html"       data-i18n="nav.about">About</a></li>
+        <li><a href="{{ site.baseurl }}/research.html"    data-i18n="nav.research">Research</a></li>
+        <li><a href="{{ site.baseurl }}/talks.html"       data-i18n="nav.talks">Talks</a></li>
+        <li><a href="{{ site.baseurl }}/team.html"        data-i18n="nav.team">Team</a></li>
+        <li><a href="{{ site.baseurl }}/teaching.html"    data-i18n="nav.teaching">Teaching</a></li>
+        <li><a href="{{ site.baseurl }}/experiments.html" data-i18n="nav.experiments">Experiments</a></li>
       </ul>
+
+      <!-- Language switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en" title="English">🇬🇧</button>
+        <button class="lang-btn"        data-lang="fr" title="Français">🇫🇷</button>
+      </div>
     </div>
   </nav>
 
-  <!-- Contenu principal -->
   <main>
     {{ content }}
   </main>
 
-  <!-- Scroll-to-top button -->
   <button id="scroll-top" title="Back to top">
     <i class="fa fa-chevron-up"></i>
   </button>
 
-  <!-- Pied de page -->
   <footer>
-    <div style="margin-bottom: 1.5rem;">
+    <div style="margin-bottom:1.5rem;">
       <h3 class="gradient-text" style="font-size:1.3rem; margin-bottom:0.5rem;">Oualid IKHOU</h3>
-      <p>{{ site.affiliation | markdownify | strip_html }}</p>
-      <p><i class="fa-solid fa-location-dot" style="margin-right: 8px; color: var(--accent-blue);"></i>{{ site.location | markdownify | strip_html }}</p>
+      <p data-i18n="footer.affiliation">PhD Student in Engineering Sciences – Fluid Mechanics and Physics<br/>Aix-Marseille University<br/>IUSTI Laboratory</p>
+      <p style="margin-top:0.5rem;"><i class="fa-solid fa-location-dot" style="margin-right:8px; color:var(--accent-sky);"></i><span data-i18n="footer.location">Aix-Marseille University, Marseille, France</span></p>
     </div>
-
-    <div style="margin-bottom: 1.5rem;">
-      {{ site.contact }}
+    <div style="margin-bottom:1.5rem;">
+      <a href="mailto:oualid.ikhou@univ-amu.fr">
+        <i class="fa fa-envelope" style="margin-right:6px;"></i><span data-i18n="footer.contact">Contact me via email</span>
+      </a>
     </div>
-
-    <div class="copyright">
-      &copy; 2026 Oualid IKHOU — Built with passion &amp; Jekyll
-    </div>
+    <div class="copyright" data-i18n="footer.copy">© 2026 Oualid IKHOU — Built with passion &amp; Jekyll</div>
   </footer>
 
+  <!-- i18n -->
+  <script src="{{ site.baseurl }}/assets/js/i18n.js"></script>
+
   <script>
+    // Hamburger
+    const hamburger = document.getElementById('nav-hamburger');
+    const navMenu   = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('active', open);
+    });
+
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+      });
+    });
+
     // Scroll-to-top
     const scrollBtn = document.getElementById('scroll-top');
     window.addEventListener('scroll', () => {
       scrollBtn.classList.toggle('visible', window.scrollY > 400);
     });
     scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Skill bars animation via IntersectionObserver
-    const fills = document.querySelectorAll('.skill-fill[data-width]');
-    if (fills.length) {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.style.width = e.target.dataset.width;
-            obs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.3 });
-      fills.forEach(f => obs.observe(f));
-    }
-
-    // Stat counters animation
-    const counters = document.querySelectorAll('.stat-number[data-target]');
-    if (counters.length) {
-      const cObs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            const target = +e.target.dataset.target;
-            const suffix = e.target.dataset.suffix || '';
-            let current = 0;
-            const step = Math.ceil(target / 40);
-            const timer = setInterval(() => {
-              current = Math.min(current + step, target);
-              e.target.textContent = current + suffix;
-              if (current >= target) clearInterval(timer);
-            }, 35);
-            cObs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.5 });
-      counters.forEach(c => cObs.observe(c));
-    }
   </script>
 
 </body>
