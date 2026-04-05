@@ -4,9 +4,9 @@ title: Research
 ---
 
 <section>
-  <h1 class="gradient-text">Research Projects & Publications</h1>
+  <h1 class="gradient-text" data-i18n="research.title">Research Projects & Publications</h1>
 
-  <p class="hero-bio">
+  <p class="hero-bio" data-i18n="research.intro">
     My research focuses on the numerical and experimental study of confined fires, with applications for firefighter interventions. I specialize in predicting fire curves using data assimilation techniques and experimental validation.
   </p>
 

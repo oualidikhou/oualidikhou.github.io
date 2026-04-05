@@ -16,6 +16,8 @@
 </head>
 <body>
 
+  <canvas id="fire-bg"></canvas>
+
   <nav id="navbar">
     <div class="nav-container">
 
@@ -104,6 +106,142 @@
       scrollBtn.classList.toggle('visible', window.scrollY > 400);
     });
     scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+  <!-- Fire background -->
+  <script>
+    (function () {
+      const canvas = document.getElementById('fire-bg');
+      const ctx    = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      /* ── Flame tongues ─────────────────────────── */
+      const TONGUE_COUNT = 18;
+      const tongues = Array.from({ length: TONGUE_COUNT }, (_, i) => ({
+        x:      (i / (TONGUE_COUNT - 1)) * 1.1 - 0.05,   // normalised 0-1 across width
+        phase:  Math.random() * Math.PI * 2,
+        speed:  Math.random() * 1.2 + 0.6,
+        height: Math.random() * 0.13 + 0.07,             // normalised screen height
+        width:  Math.random() * 0.07 + 0.04,
+      }));
+
+      function drawFlames(t) {
+        const W = canvas.width;
+        const H = canvas.height;
+
+        // Base heat glow at the very bottom
+        const baseGlow = ctx.createLinearGradient(0, H, 0, H * 0.85);
+        baseGlow.addColorStop(0,   'rgba(180, 40,  0, 0.22)');
+        baseGlow.addColorStop(0.5, 'rgba(220, 80,  0, 0.10)');
+        baseGlow.addColorStop(1,   'rgba(255,120,  0, 0)');
+        ctx.fillStyle = baseGlow;
+        ctx.fillRect(0, H * 0.85, W, H * 0.15);
+
+        // Individual flame tongues – 2 layers (back then front)
+        [
+          { heightMult: 1.0, opacBase: 0.22 },
+          { heightMult: 0.65, opacBase: 0.18 },
+        ].forEach(({ heightMult, opacBase }) => {
+          tongues.forEach(fl => {
+            const cx   = fl.x * W;
+            const flkH = Math.sin(t * fl.speed + fl.phase) * 0.35
+                       + Math.sin(t * fl.speed * 1.7 + fl.phase + 1) * 0.15;
+            const h    = (fl.height + flkH * 0.04) * H * heightMult;
+            const hw   = fl.width * W;
+            const flkX = Math.sin(t * fl.speed * 0.9 + fl.phase) * hw * 0.35;
+
+            const grad = ctx.createLinearGradient(cx, H, cx, H - h);
+            grad.addColorStop(0,    `rgba(200, 50,  0, ${opacBase})`);
+            grad.addColorStop(0.35, `rgba(255,110,  0, ${opacBase * 0.75})`);
+            grad.addColorStop(0.65, `rgba(255,185, 20, ${opacBase * 0.45})`);
+            grad.addColorStop(1,    'rgba(255,220,80, 0)');
+
+            ctx.beginPath();
+            ctx.moveTo(cx - hw, H);
+            ctx.bezierCurveTo(
+              cx - hw * 0.5,  H - h * 0.35,
+              cx + flkX - hw * 0.15, H - h * 0.72,
+              cx + flkX,      H - h
+            );
+            ctx.bezierCurveTo(
+              cx + flkX + hw * 0.15, H - h * 0.72,
+              cx + hw * 0.5,  H - h * 0.35,
+              cx + hw,        H
+            );
+            ctx.fillStyle = grad;
+            ctx.fill();
+          });
+        });
+      }
+
+      /* ── Embers / sparks ───────────────────────── */
+      const EMBER_COUNT = 90;
+
+      function newEmber(spreadY) {
+        return {
+          x:       Math.random() * canvas.width,
+          y:       canvas.height + (spreadY ? Math.random() * canvas.height : Math.random() * 60),
+          r:       Math.random() * 2.2 + 0.6,
+          vy:      Math.random() * 1.4 + 0.4,
+          vx:      (Math.random() - 0.5) * 0.6,
+          life:    0,
+          maxLife: Math.random() * 220 + 80,
+          hue:     Math.random() * 28 + 8,   // 8-36 → deep orange to yellow-orange
+          opac:    Math.random() * 0.55 + 0.35,
+        };
+      }
+
+      const embers = Array.from({ length: EMBER_COUNT }, () => newEmber(true));
+
+      function drawEmbers() {
+        embers.forEach((em, i) => {
+          em.life++;
+          em.y  -= em.vy;
+          em.x  += em.vx + Math.sin(em.life * 0.06 + i) * 0.25;
+
+          const ratio   = em.life / em.maxLife;
+          const opacity = em.opac * (1 - ratio) * 0.65;
+
+          if (em.life >= em.maxLife || em.y < -10) {
+            embers[i] = newEmber(false);
+            return;
+          }
+
+          // Soft glow halo
+          const glow = ctx.createRadialGradient(em.x, em.y, 0, em.x, em.y, em.r * 4);
+          glow.addColorStop(0,   `hsla(${em.hue}, 100%, 72%, ${opacity})`);
+          glow.addColorStop(0.4, `hsla(${em.hue},  95%, 55%, ${opacity * 0.5})`);
+          glow.addColorStop(1,   `hsla(${em.hue},  90%, 40%, 0)`);
+          ctx.beginPath();
+          ctx.arc(em.x, em.y, em.r * 4, 0, Math.PI * 2);
+          ctx.fillStyle = glow;
+          ctx.fill();
+
+          // Bright core
+          ctx.beginPath();
+          ctx.arc(em.x, em.y, em.r, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${em.hue + 25}, 100%, 85%, ${Math.min(opacity * 2, 0.9)})`;
+          ctx.fill();
+        });
+      }
+
+      /* ── Animation loop ────────────────────────── */
+      let t = 0;
+      function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        t += 0.016;
+        drawFlames(t);
+        drawEmbers();
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
   </script>
 
 </body>
