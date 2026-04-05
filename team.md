@@ -26,7 +26,8 @@ title: Team
   <div style="margin-top:3rem;">
     <h3 style="color:var(--accent-sky); margin-bottom:1rem;" data-i18n="team.lab.title">The Laboratory</h3>
     <p data-i18n="team.lab.desc">
-      The <strong>IUSTI Laboratory</strong> (Institut Universitaire des Systèmes Thermiques Industriels) is a joint research unit between CNRS and Aix-Marseille University, specializing in heat transfer, fluid mechanics, and complex systems.
+      The IUSTI Laboratory (Institut Universitaire des Systèmes Thermiques Industriels) is a joint research unit between CNRS and Aix-Marseille University, specializing in heat transfer, fluid mechanics, and complex systems.
+      The CERISC (Centre d’études et de recherche interdisciplinaires sur la sécurité civile) at ENSOSP focuses on firefighter training, civil safety, and emergency response.
     </p>
   </div>
 </section>
