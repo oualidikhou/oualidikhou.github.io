@@ -61,7 +61,8 @@ const translations = {
     "team.sup2.name": "Dr. Kevin Varrall",
     "team.sup2.role": "Assistant Professor, IUSTI",
     "team.lab.title": "The Laboratory",
-    "team.lab.desc":  "The <strong>IUSTI Laboratory</strong> (Institut Universitaire des Systèmes Thermiques Industriels) is a joint research unit between CNRS and Aix-Marseille University, specializing in heat transfer, fluid mechanics, and complex systems.",
+    "team.lab.desc.iusti":  "The IUSTI Laboratory (Institut Universitaire des Systèmes Thermiques Industriels) is a joint research unit between CNRS and Aix-Marseille University, specializing in heat transfer, fluid mechanics, and complex systems.",
+    "team.lab.desc.cerisc":  "The CERISC (Centre d’études et de recherche interdisciplinaires sur la sécurité civile) at ENSOSP focuses on firefighter training, civil safety, and emergency response.",
 
     /* ── Teaching ── */
     "teaching.title": "Teaching & Mentorship",
@@ -151,8 +152,8 @@ const translations = {
     "team.sup2.name": "Dr. Kevin Varrall",
     "team.sup2.role": "Maître de conférences, IUSTI",
     "team.lab.title": "Le Laboratoire",
-    "team.lab.desc":  "Le <strong>laboratoire IUSTI</strong> (Institut Universitaire des Systèmes Thermiques Industriels) est une unité mixte de recherche entre le CNRS et Aix-Marseille Université, spécialisée dans le transfert de chaleur, la mécanique des fluides et les systèmes complexes.",
-
+    "team.lab.desc.iusti": "Le Laboratoire IUSTI (Institut Universitaire des Systèmes Thermiques Industriels) est une unité de recherche conjointe du CNRS et de l’Université Aix-Marseille, spécialisée dans le transfert de chaleur, la mécanique des fluides et les systèmes complexes.",
+    "team.lab.desc.cerisc": "Le CERISC (Centre d’études et de recherche interdisciplinaires sur la sécurité civile) à l’ENSOSP se concentre sur la formation des sapeurs-pompiers, la sécurité civile et la réponse aux situations d’urgence.",
     /* ── Teaching ── */
     "teaching.title": "Enseignement & Mentorat",
     "teaching.intro": "Passionné par l'éducation, je contribue activement aux activités d'enseignement et de mentorat à Aix-Marseille Université et dans les programmes de formation des sapeurs-pompiers.",
