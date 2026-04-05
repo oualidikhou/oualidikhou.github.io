@@ -70,7 +70,7 @@ const translations = {
     "teaching.uni.course": "BUT Hygiene, Safety & Environment (HSE)",
     "teaching.uni.detail": "Teaching Contract (CME) · Aix-Marseille University · 2024–2026 · 64 h/year<br/>Preparation and delivery of tutorials (TD) and lab sessions (TP) encouraging student participation.<br/>Individual student support and guidance on progress.<br/>Development of pedagogical methods to facilitate understanding and application of scientific concepts.",
     "teaching.ff.title": "Firefighter Training",
-    "teaching.ff.school": "National Fire Officers School (École Nationale Supérieure des Officiers de Sapeurs-Pompiers)",
+    "teaching.ff.school": "National Fire Officers Academy (École Nationale Supérieure des Officiers de Sapeurs-Pompiers)",
     "teaching.ff.detail": "Training program · Aix-en-Provence · 2023–2026<br/>Design and delivery of courses on scientific research methodology.<br/>Individual and group supervision of trainees, guiding data collection, analysis, and report writing.<br/>Development of pedagogical and organizational skills to transmit scientific and practical knowledge effectively.",
     "teaching.mentorship.title": "Mentorship",
     "teaching.mentorship.desc":  "I mentor Bachelor and Master students on research projects, including both numerical and experimental studies. I guide them through numerical modeling, data analysis, experimental design, and scientific writing, emphasizing individualized mentorship and collaborative learning to support their development.",
