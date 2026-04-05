@@ -91,7 +91,7 @@ const translations = {
     "footer.affiliation": "PhD Student in Engineering Sciences – Fluid Mechanics and Physics<br/>Aix-Marseille University<br/>IUSTI Laboratory",
     "footer.location":    "Aix-Marseille University, Marseille, France",
     "footer.contact":     "Contact me via email",
-    "footer.copy":        "© 2026 Oualid IKHOU — Built with passion & Jekyll",
+    "footer.copy":        "© 2026 Oualid IKHOU — Built with passion",
   },
 
   fr: {
@@ -181,7 +181,7 @@ const translations = {
     "footer.affiliation": "Doctorant en Sciences de l'Ingénieur – Mécanique des Fluides et Physique<br/>Aix-Marseille Université<br/>Laboratoire IUSTI",
     "footer.location":    "Aix-Marseille Université, Marseille, France",
     "footer.contact":     "Me contacter par email",
-    "footer.copy":        "© 2026 Oualid IKHOU — Conçu avec passion & Jekyll",
+    "footer.copy":        "© 2026 Oualid IKHOU — Conçu avec passion",
   }
 };
 
