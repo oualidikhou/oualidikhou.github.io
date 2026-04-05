@@ -38,7 +38,7 @@ const translations = {
     "about.interests.title": "Research Interests",
     "about.tag1": "Numerical Fire Modeling",
     "about.tag2": "Data Assimilation",
-    "about.tag3": "Fire Safety and Intervention",
+    "about.tag3": "Fire Safety",
     "about.tag4": "Fluid Mechanics & Heat Transfer",
 
     /* ── Research ── */
@@ -129,7 +129,7 @@ const translations = {
     "about.interests.title": "Thèmes de recherche",
     "about.tag1": "Modélisation numérique des incendies",
     "about.tag2": "Assimilation de données",
-    "about.tag3": "Sécurité incendie et intervention",
+    "about.tag3": "Sécurité incendie",
     "about.tag4": "Mécanique des fluides & transfert de chaleur",
 
     /* ── Research ── */
