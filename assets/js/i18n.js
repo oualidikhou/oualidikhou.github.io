@@ -16,7 +16,7 @@ const translations = {
     /* ── Home / Hero ── */
     "hero.subtitle":   "PhD Student in Engineering Sciences – Fluid Mechanics & Physics<br/>IUSTI Laboratory, Aix-Marseille University",
     "hero.bio1":       "I am a PhD student specializing in numerical and experimental studies of confined fires, with applications to firefighter interventions. My research focuses on the prediction of fire curves using advanced data assimilation techniques and computational modeling, combining fluid mechanics, heat transfer, and applied mathematics.",
-    "hero.bio2":       "I am passionate about interdisciplinary collaboration, mentoring students, and contributing to scientific publications. Beyond research, I aim to share insights through talks, open-source software, and applied projects that enhance fire safety and emergency response.",
+    "hero.bio2":       "Beyond research, I am committed to sharing my knowledge through mentoring, scientific publications, conferences, and applied projects that have a tangible impact on fire safety.",
     "hero.contact":    "Contact Me",
     "hero.cv":         "CV",
 
@@ -106,7 +106,7 @@ const translations = {
     /* ── Home / Hero ── */
     "hero.subtitle":   "Doctorant en Sciences de l'Ingénieur – Mécanique des Fluides & Physique<br/>Laboratoire IUSTI, Aix-Marseille Université",
     "hero.bio1":       "Je suis doctorant spécialisé dans l'étude numérique et expérimentale des incendies confinés, avec des applications pour les interventions des sapeurs-pompiers. Mes recherches portent sur la prédiction des courbes d'incendie à l'aide de techniques avancées d'assimilation de données et de modélisation numérique, en combinant la mécanique des fluides, le transfert de chaleur et les mathématiques appliquées.",
-    "hero.bio2":       "Je suis passionné par la collaboration interdisciplinaire, le mentorat d'étudiants et la contribution aux publications scientifiques. Au-delà de la recherche, je cherche à partager mes connaissances à travers des conférences et des projets appliqués qui améliorent la sécurité incendie et la réponse d'urgence.",
+    "hero.bio2":       "Au-delà de la recherche, je m’engage à partager mes connaissances par le mentorat, les publications scientifiques, les conférences et des projets appliqués qui ont un impact concret sur la sécurité incendie.",
     "hero.contact":    "Me contacter",
     "hero.cv":         "CV",
 
