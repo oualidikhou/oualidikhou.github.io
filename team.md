@@ -6,7 +6,7 @@ title: Team
 <section>
   <h1 class="gradient-text" data-i18n="team.title">Research Team &amp; Collaborators</h1>
   <p class="hero-bio" data-i18n="team.intro">
-    Research is a collaborative effort. I am fortunate to work with brilliant minds at the IUSTI Laboratory and beyond.
+    Research is built on collaboration and shared expertise. I am fortunate to work with brilliant teams at both the IUSTI Laboratory and CERISC at ENSOSP, exploring innovative approaches in fire dynamics, safety, and emergency response. These collaborations allow me to combine numerical modeling, experimental studies, and applied research to make a tangible impact on firefighter training and civil safety.
   </p>
 
   <div style="margin-top:2rem;">
