@@ -18,29 +18,36 @@
 
   <nav id="navbar">
     <div class="nav-container">
+
+      <!-- Logo -->
       <div class="nav-logo">
         <a href="{{ site.baseurl }}/">OI</a>
       </div>
 
-      <!-- Hamburger (mobile) -->
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <!-- Right side: menu + lang + hamburger grouped together -->
+      <div class="nav-right">
 
-      <!-- Links -->
-      <ul id="nav-menu">
-        <li><a href="{{ site.baseurl }}/about.html"       data-i18n="nav.about">About</a></li>
-        <li><a href="{{ site.baseurl }}/research.html"    data-i18n="nav.research">Research</a></li>
-        <li><a href="{{ site.baseurl }}/talks.html"       data-i18n="nav.talks">Talks</a></li>
-        <li><a href="{{ site.baseurl }}/team.html"        data-i18n="nav.team">Team</a></li>
-        <li><a href="{{ site.baseurl }}/teaching.html"    data-i18n="nav.teaching">Teaching</a></li>
-        <li><a href="{{ site.baseurl }}/experiments.html" data-i18n="nav.experiments">Experiments</a></li>
-      </ul>
+        <!-- Links (hidden on mobile, shown in dropdown) -->
+        <ul id="nav-menu">
+          <li><a href="{{ site.baseurl }}/about.html"       data-i18n="nav.about">About</a></li>
+          <li><a href="{{ site.baseurl }}/research.html"    data-i18n="nav.research">Research</a></li>
+          <li><a href="{{ site.baseurl }}/talks.html"       data-i18n="nav.talks">Talks</a></li>
+          <li><a href="{{ site.baseurl }}/team.html"        data-i18n="nav.team">Team</a></li>
+          <li><a href="{{ site.baseurl }}/teaching.html"    data-i18n="nav.teaching">Teaching</a></li>
+          <li><a href="{{ site.baseurl }}/experiments.html" data-i18n="nav.experiments">Experiments</a></li>
+        </ul>
 
-      <!-- Language switcher -->
-      <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="en" title="English">🇬🇧</button>
-        <button class="lang-btn"        data-lang="fr" title="Français">🇫🇷</button>
+        <!-- Language switcher (always visible) -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en" title="English">&#127468;&#127463;</button>
+          <button class="lang-btn"        data-lang="fr" title="Français">&#127467;&#127479;</button>
+        </div>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+
       </div>
     </div>
   </nav>
