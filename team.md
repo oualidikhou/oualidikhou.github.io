@@ -24,7 +24,7 @@ title: Team
   </div>
 
   <div style="margin-top:3rem;">
-    <h3 style="color:var(--accent-sky); margin-bottom:1rem;" data-i18n="team.lab.title">The Laboratory</h3>
+    <h3 style="color:var(--accent-sky); margin-bottom:1rem;" data-i18n="team.lab.title"> Laboratory</h3>
     <p data-i18n="team.lab.desc.iusti">
       The IUSTI Laboratory (Institut Universitaire des Systèmes Thermiques Industriels) is a joint research unit between CNRS and Aix-Marseille University, specializing in heat transfer, fluid mechanics, and complex systems.
     </p>
