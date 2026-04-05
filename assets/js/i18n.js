@@ -54,7 +54,7 @@ const translations = {
 
     /* ── Team ── */
     "team.title":     "Research Team & Collaborators",
-    "team.intro":     "Research is a collaborative effort. I am fortunate to work with brilliant minds at the IUSTI Laboratory and beyond.",
+    "team.intro":     "Research is built on collaboration and shared expertise. I am fortunate to work with brilliant teams at both the IUSTI Laboratory and CERISC at ENSOSP, exploring innovative approaches in fire dynamics, safety, and emergency response. These collaborations allow me to combine numerical modeling, experimental studies, and applied research to make a tangible impact on firefighter training and civil safety.",
     "team.supervisors": "Supervisors",
     "team.sup1.name": "Prof. Olivier Vauquelin",
     "team.sup1.role": "Director of Research, IUSTI",
@@ -145,7 +145,7 @@ const translations = {
 
     /* ── Team ── */
     "team.title":     "Équipe de recherche & Collaborateurs",
-    "team.intro":     "La recherche est un effort collaboratif. J'ai la chance de travailler avec des personnes brillantes au laboratoire IUSTI et au-delà.",
+    "team.intro":     "La recherche repose sur la collaboration et le partage d’expertise. J’ai la chance de travailler avec des équipes brillantes au sein du Laboratoire IUSTI et du CERISC à l’ENSOSP, en explorant des approches innovantes dans la dynamique des incendies, la sécurité et la réponse aux situations d’urgence. Ces collaborations me permettent de combiner modélisation numérique, études expérimentales et recherches appliquées afin d’avoir un impact concret sur la formation des sapeurs-pompiers et la sécurité civile.",
     "team.supervisors": "Directeurs de thèse",
     "team.sup1.name": "Prof. Olivier Vauquelin",
     "team.sup1.role": "Directeur de recherche, IUSTI",
