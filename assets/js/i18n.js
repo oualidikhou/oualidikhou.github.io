@@ -60,7 +60,7 @@ const translations = {
     "team.sup1.role": "Director of Research, IUSTI",
     "team.sup2.name": "Dr. Kevin Varrall",
     "team.sup2.role": "Assistant Professor, IUSTI",
-    "team.lab.title": "The Laboratory",
+    "team.lab.title": "Laboratory",
     "team.lab.desc.iusti":  "The IUSTI Laboratory (Institut Universitaire des Systèmes Thermiques Industriels) is a joint research unit between CNRS and Aix-Marseille University, specializing in heat transfer, fluid mechanics, and complex systems.",
     "team.lab.desc.cerisc":  "The CERISC (Centre d’études et de recherche interdisciplinaires sur la sécurité civile) at ENSOSP focuses on firefighter training, civil safety, and emergency response.",
 
@@ -151,7 +151,7 @@ const translations = {
     "team.sup1.role": "Directeur de recherche, IUSTI",
     "team.sup2.name": "Dr. Kevin Varrall",
     "team.sup2.role": "Maître de conférences, IUSTI",
-    "team.lab.title": "Le Laboratoire",
+    "team.lab.title": "Laboratoire",
     "team.lab.desc.iusti": "Le Laboratoire IUSTI (Institut Universitaire des Systèmes Thermiques Industriels) est une unité de recherche conjointe du CNRS et de l’Université Aix-Marseille, spécialisée dans le transfert de chaleur, la mécanique des fluides et les systèmes complexes.",
     "team.lab.desc.cerisc": "Le CERISC (Centre d’études et de recherche interdisciplinaires sur la sécurité civile) à l’ENSOSP se concentre sur la formation des sapeurs-pompiers, la sécurité civile et la réponse aux situations d’urgence.",
     /* ── Teaching ── */
