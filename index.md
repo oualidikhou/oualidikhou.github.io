@@ -10,6 +10,7 @@ title: Home
     </div>
 
     <div class="hero-content">
+      <div class="role-badge" data-i18n="hero.badge">PhD Student · Volunteer Firefighter</div>
       <h1 class="hero-title"><span class="gradient-text">Oualid IKHOU</span></h1>
       <h2 class="hero-subtitle" data-i18n="hero.subtitle">
         PhD Student in Engineering Sciences – Fluid Mechanics &amp; Physics<br/>
@@ -28,6 +29,21 @@ title: Home
         to scientific publications. Beyond research, I aim to share insights through talks,
         open-source software, and applied projects that enhance fire safety and emergency response.
       </p>
+
+      <div class="hero-stats" data-reveal-group>
+        <div class="hero-stat">
+          <span class="hero-stat-value">3+</span>
+          <span class="hero-stat-label" data-i18n="hero.stat.years">Years PhD</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">4D-Var</span>
+          <span class="hero-stat-label" data-i18n="hero.stat.method">Method</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">IUSTI</span>
+          <span class="hero-stat-label" data-i18n="hero.stat.lab">Laboratory</span>
+        </div>
+      </div>
 
       <div class="social-links">
         <a href="mailto:oualid.ikhou@univ-amu.fr" class="contact-btn">

@@ -67,23 +67,81 @@
   </button>
 
   <footer>
-    <div style="margin-bottom:1.5rem;">
-      <h3 class="gradient-text" style="font-size:1.3rem; margin-bottom:0.5rem;">Oualid IKHOU</h3>
-      <p data-i18n="footer.affiliation">PhD Student in Engineering Sciences – Fluid Mechanics and Physics<br/>Aix-Marseille University<br/>IUSTI Laboratory</p>
-      <p style="margin-top:0.5rem;"><i class="fa-solid fa-location-dot" style="margin-right:8px; color:var(--accent-sky);"></i><span data-i18n="footer.location">Aix-Marseille University, Marseille, France</span></p>
+    <div style="max-width:var(--max-width); margin:0 auto;">
+      <div style="margin-bottom:1.2rem;">
+        <h3 class="gradient-text" style="font-size:1.4rem; margin-bottom:0.4rem; letter-spacing:-0.5px;">Oualid IKHOU</h3>
+        <p data-i18n="footer.affiliation" style="line-height:1.8;">PhD Student in Engineering Sciences – Fluid Mechanics and Physics<br/>Aix-Marseille University<br/>IUSTI Laboratory</p>
+        <p style="margin-top:0.6rem;">
+          <i class="fa-solid fa-location-dot" style="margin-right:8px; color:var(--accent-sky);"></i>
+          <span data-i18n="footer.location">Aix-Marseille University, Marseille, France</span>
+        </p>
+      </div>
+
+      <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+        <a href="mailto:oualid.ikhou@univ-amu.fr" class="social-icon" title="Email" style="color:var(--text-primary);">
+          <i class="fa fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/oualid-ikhou-b40a1918a/" target="_blank" class="social-icon" title="LinkedIn" style="color:var(--text-primary);">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="footer-divider"></div>
+      <div class="copyright" data-i18n="footer.copy">© 2026 Oualid IKHOU — Built with passion</div>
     </div>
-    <div style="margin-bottom:1.5rem;">
-      <a href="mailto:oualid.ikhou@univ-amu.fr">
-        <i class="fa fa-envelope" style="margin-right:6px;"></i><span data-i18n="footer.contact">Contact me via email</span>
-      </a>
-    </div>
-    <div class="copyright" data-i18n="footer.copy">© 2026 Oualid IKHOU — Built with passion &amp; love </div>
   </footer>
 
   <!-- i18n -->
   <script src="{{ site.baseurl }}/assets/js/i18n.js"></script>
 
+  <!-- Scroll reveal -->
   <script>
+    (function () {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      function initReveal() {
+        document.querySelectorAll('[data-reveal], [data-reveal-group]').forEach(el => {
+          observer.observe(el);
+        });
+        // Auto-tag all sections and pub-cards not already tagged
+        document.querySelectorAll('section, .pub-card, .experiment-card').forEach(el => {
+          if (!el.hasAttribute('data-reveal')) {
+            el.setAttribute('data-reveal', '');
+            observer.observe(el);
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initReveal);
+      } else {
+        initReveal();
+      }
+    })();
+  </script>
+
+  <script>
+    // Active nav link
+    (function () {
+      const path = window.location.pathname.replace(/\/$/, '').replace(/\.html$/, '') || '/';
+      document.querySelectorAll('#nav-menu a').forEach(link => {
+        const href = link.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (path.endsWith(href) && href !== '') {
+          link.classList.add('active');
+        }
+      });
+    })();
+
     // Hamburger
     const hamburger = document.getElementById('nav-hamburger');
     const navMenu   = document.getElementById('nav-menu');
