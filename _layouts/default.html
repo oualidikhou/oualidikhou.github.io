@@ -175,12 +175,14 @@
     function resize() {
       canvas.width  = window.innerWidth;
       canvas.height = window.innerHeight;
+      compCanvas.width  = canvas.width;
+      compCanvas.height = Math.floor(canvas.height * 0.36);
       seedFire();
     }
 
     /* ── Doom-style fire simulation ─────────────────── */
-    const FIRE_W = 250;
-    const FIRE_H = 90;
+    const FIRE_W = 260;
+    const FIRE_H = 110;   // taller buffer = more natural fadeout at top
     const offCanvas = document.createElement('canvas');
     offCanvas.width  = FIRE_W;
     offCanvas.height = FIRE_H;
@@ -188,18 +190,22 @@
     const imgData   = offCtx.createImageData(FIRE_W, FIRE_H);
     const fireMap   = new Uint8Array(FIRE_W * FIRE_H);
 
-    // Build palette: black → deep red → red → orange → amber → yellow → white
+    // Composite canvas (reused every frame) for gradient masking
+    const compCanvas = document.createElement('canvas');
+    const compCtx    = compCanvas.getContext('2d');
+
+    // Palette: fully transparent until 62, then sharp ramp to vivid fire colors
     const firePalette = (function () {
       const pal   = new Uint8Array(256 * 4);
       const stops = [
         [  0, [  0,  0,  0,   0]],
-        [ 32, [ 50,  0,  0, 110]],
-        [ 72, [140, 10,  0, 185]],
-        [120, [220, 45,  0, 210]],
-        [160, [255,105,  0, 225]],
-        [200, [255,180, 15, 235]],
-        [235, [255,235, 70, 242]],
-        [255, [255,255,185, 248]],
+        [ 62, [  0,  0,  0,   0]],   // keep transparent — removes dim rectangle haze
+        [ 90, [110, 15,  0,  80]],   // quick alpha onset
+        [125, [215, 45,  0, 195]],
+        [162, [255,108,  0, 222]],
+        [200, [255,182, 12, 232]],
+        [232, [255,238, 65, 240]],
+        [255, [255,255,185, 246]],
       ];
       for (let i = 0; i < 256; i++) {
         let s1 = stops[0], s2 = stops[1];
@@ -252,13 +258,37 @@
       }
       offCtx.putImageData(imgData, 0, 0);
 
-      const dH = canvas.height * 0.30;
-      ctx.save();
-      ctx.imageSmoothingEnabled  = true;
-      ctx.imageSmoothingQuality  = 'high';
-      ctx.filter = 'blur(3px)';
-      ctx.drawImage(offCanvas, 0, canvas.height - dH, canvas.width, dH);
-      ctx.restore();
+      const dH = Math.floor(canvas.height * 0.36);
+      const dY = canvas.height - dH;
+
+      // Resize composite canvas only when dimensions change
+      if (compCanvas.width !== canvas.width || compCanvas.height !== dH) {
+        compCanvas.width  = canvas.width;
+        compCanvas.height = dH;
+      }
+
+      // 1. Draw blurred fire into composite canvas
+      compCtx.clearRect(0, 0, canvas.width, dH);
+      compCtx.imageSmoothingEnabled = true;
+      compCtx.imageSmoothingQuality = 'high';
+      compCtx.filter = 'blur(6px)';
+      compCtx.drawImage(offCanvas, 0, 0, canvas.width, dH);
+      compCtx.filter = 'none';
+
+      // 2. Apply destination-in gradient: top is transparent → natural flame silhouette
+      compCtx.globalCompositeOperation = 'destination-in';
+      const mask = compCtx.createLinearGradient(0, 0, 0, dH);
+      mask.addColorStop(0,    'rgba(0,0,0,0)');     // fully transparent at top
+      mask.addColorStop(0.18, 'rgba(0,0,0,0)');     // stay transparent
+      mask.addColorStop(0.42, 'rgba(0,0,0,0.55)');  // irregular mid-fade
+      mask.addColorStop(0.68, 'rgba(0,0,0,0.88)');
+      mask.addColorStop(1,    'rgba(0,0,0,1)');      // fully opaque at bottom
+      compCtx.fillStyle = mask;
+      compCtx.fillRect(0, 0, canvas.width, dH);
+      compCtx.globalCompositeOperation = 'source-over';
+
+      // 3. Blit composite onto main canvas
+      ctx.drawImage(compCanvas, 0, dY);
     }
 
     /* ── Base heat glow ─────────────────────────────── */
