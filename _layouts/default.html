@@ -26,10 +26,9 @@
         <a href="{{ site.baseurl }}/">OI</a>
       </div>
 
-      <!-- Right side: menu + lang + hamburger grouped together -->
+      <!-- Right side: menu + lang + hamburger -->
       <div class="nav-right">
 
-        <!-- Links (hidden on mobile, shown in dropdown) -->
         <ul id="nav-menu">
           <li><a href="{{ site.baseurl }}/about.html"       data-i18n="nav.about">About</a></li>
           <li><a href="{{ site.baseurl }}/research.html"    data-i18n="nav.research">Research</a></li>
@@ -39,7 +38,7 @@
           <li><a href="{{ site.baseurl }}/experiments.html" data-i18n="nav.experiments">Experiments</a></li>
         </ul>
 
-        <!-- Language switcher (always visible) -->
+        <!-- Language switcher -->
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="en" title="English">
             <img src="{{ site.baseurl }}/assets/img/flag-en.svg" alt="EN" width="24" height="18">
@@ -49,7 +48,7 @@
           </button>
         </div>
 
-        <!-- Hamburger (mobile only) -->
+        <!-- Hamburger -->
         <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
@@ -72,7 +71,7 @@
         <h3 class="gradient-text" style="font-size:1.4rem; margin-bottom:0.4rem; letter-spacing:-0.5px;">Oualid IKHOU</h3>
         <p data-i18n="footer.affiliation" style="line-height:1.8;">PhD Student in Engineering Sciences – Fluid Mechanics and Physics<br/>Aix-Marseille University<br/>IUSTI Laboratory</p>
         <p style="margin-top:0.6rem;">
-          <i class="fa-solid fa-location-dot" style="margin-right:8px; color:var(--accent-sky);"></i>
+          <i class="fa-solid fa-location-dot" style="margin-right:8px; color:var(--fire-amber);"></i>
           <span data-i18n="footer.location">Aix-Marseille University, Marseille, France</span>
         </p>
       </div>
@@ -113,7 +112,6 @@
         document.querySelectorAll('[data-reveal], [data-reveal-group]').forEach(el => {
           observer.observe(el);
         });
-        // Auto-tag all sections and pub-cards not already tagged
         document.querySelectorAll('section, .pub-card, .experiment-card').forEach(el => {
           if (!el.hasAttribute('data-reveal')) {
             el.setAttribute('data-reveal', '');
@@ -166,140 +164,344 @@
     scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 
-  <!-- Fire background -->
+  <!-- ═══════════════════════════════════════════════════
+       FIRE BACKGROUND — Doom algorithm + embers + smoke
+       ═══════════════════════════════════════════════════ -->
   <script>
-    (function () {
-      const canvas = document.getElementById('fire-bg');
-      const ctx    = canvas.getContext('2d');
+  (function () {
+    const canvas = document.getElementById('fire-bg');
+    const ctx    = canvas.getContext('2d');
 
-      function resize() {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+      seedFire();
+    }
+
+    /* ── Doom-style fire simulation ─────────────────── */
+    const FIRE_W = 250;
+    const FIRE_H = 90;
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width  = FIRE_W;
+    offCanvas.height = FIRE_H;
+    const offCtx    = offCanvas.getContext('2d');
+    const imgData   = offCtx.createImageData(FIRE_W, FIRE_H);
+    const fireMap   = new Uint8Array(FIRE_W * FIRE_H);
+
+    // Build palette: black → deep red → red → orange → amber → yellow → white
+    const firePalette = (function () {
+      const pal   = new Uint8Array(256 * 4);
+      const stops = [
+        [  0, [  0,  0,  0,   0]],
+        [ 32, [ 50,  0,  0, 110]],
+        [ 72, [140, 10,  0, 185]],
+        [120, [220, 45,  0, 210]],
+        [160, [255,105,  0, 225]],
+        [200, [255,180, 15, 235]],
+        [235, [255,235, 70, 242]],
+        [255, [255,255,185, 248]],
+      ];
+      for (let i = 0; i < 256; i++) {
+        let s1 = stops[0], s2 = stops[1];
+        for (let s = 0; s < stops.length - 1; s++) {
+          if (i >= stops[s][0] && i <= stops[s + 1][0]) { s1 = stops[s]; s2 = stops[s + 1]; break; }
+        }
+        const span = s2[0] - s1[0];
+        const tt   = span === 0 ? 0 : (i - s1[0]) / span;
+        pal[i * 4]     = (s1[1][0] + (s2[1][0] - s1[1][0]) * tt) | 0;
+        pal[i * 4 + 1] = (s1[1][1] + (s2[1][1] - s1[1][1]) * tt) | 0;
+        pal[i * 4 + 2] = (s1[1][2] + (s2[1][2] - s1[1][2]) * tt) | 0;
+        pal[i * 4 + 3] = (s1[1][3] + (s2[1][3] - s1[1][3]) * tt) | 0;
       }
-      resize();
-      window.addEventListener('resize', resize);
-
-      /* ── Flame tongues ─────────────────────────── */
-      const TONGUE_COUNT = 18;
-      const tongues = Array.from({ length: TONGUE_COUNT }, (_, i) => ({
-        x:      (i / (TONGUE_COUNT - 1)) * 1.1 - 0.05,   // normalised 0-1 across width
-        phase:  Math.random() * Math.PI * 2,
-        speed:  Math.random() * 1.2 + 0.6,
-        height: Math.random() * 0.13 + 0.07,             // normalised screen height
-        width:  Math.random() * 0.07 + 0.04,
-      }));
-
-      function drawFlames(t) {
-        const W = canvas.width;
-        const H = canvas.height;
-
-        // Base heat glow at the very bottom
-        const baseGlow = ctx.createLinearGradient(0, H, 0, H * 0.85);
-        baseGlow.addColorStop(0,   'rgba(180, 40,  0, 0.22)');
-        baseGlow.addColorStop(0.5, 'rgba(220, 80,  0, 0.10)');
-        baseGlow.addColorStop(1,   'rgba(255,120,  0, 0)');
-        ctx.fillStyle = baseGlow;
-        ctx.fillRect(0, H * 0.85, W, H * 0.15);
-
-        // Individual flame tongues – 2 layers (back then front)
-        [
-          { heightMult: 1.0, opacBase: 0.22 },
-          { heightMult: 0.65, opacBase: 0.18 },
-        ].forEach(({ heightMult, opacBase }) => {
-          tongues.forEach(fl => {
-            const cx   = fl.x * W;
-            const flkH = Math.sin(t * fl.speed + fl.phase) * 0.35
-                       + Math.sin(t * fl.speed * 1.7 + fl.phase + 1) * 0.15;
-            const h    = (fl.height + flkH * 0.04) * H * heightMult;
-            const hw   = fl.width * W;
-            const flkX = Math.sin(t * fl.speed * 0.9 + fl.phase) * hw * 0.35;
-
-            const grad = ctx.createLinearGradient(cx, H, cx, H - h);
-            grad.addColorStop(0,    `rgba(200, 50,  0, ${opacBase})`);
-            grad.addColorStop(0.35, `rgba(255,110,  0, ${opacBase * 0.75})`);
-            grad.addColorStop(0.65, `rgba(255,185, 20, ${opacBase * 0.45})`);
-            grad.addColorStop(1,    'rgba(255,220,80, 0)');
-
-            ctx.beginPath();
-            ctx.moveTo(cx - hw, H);
-            ctx.bezierCurveTo(
-              cx - hw * 0.5,  H - h * 0.35,
-              cx + flkX - hw * 0.15, H - h * 0.72,
-              cx + flkX,      H - h
-            );
-            ctx.bezierCurveTo(
-              cx + flkX + hw * 0.15, H - h * 0.72,
-              cx + hw * 0.5,  H - h * 0.35,
-              cx + hw,        H
-            );
-            ctx.fillStyle = grad;
-            ctx.fill();
-          });
-        });
-      }
-
-      /* ── Embers / sparks ───────────────────────── */
-      const EMBER_COUNT = 90;
-
-      function newEmber(spreadY) {
-        return {
-          x:       Math.random() * canvas.width,
-          y:       canvas.height + (spreadY ? Math.random() * canvas.height : Math.random() * 60),
-          r:       Math.random() * 2.2 + 0.6,
-          vy:      Math.random() * 1.4 + 0.4,
-          vx:      (Math.random() - 0.5) * 0.6,
-          life:    0,
-          maxLife: Math.random() * 220 + 80,
-          hue:     Math.random() * 28 + 8,   // 8-36 → deep orange to yellow-orange
-          opac:    Math.random() * 0.55 + 0.35,
-        };
-      }
-
-      const embers = Array.from({ length: EMBER_COUNT }, () => newEmber(true));
-
-      function drawEmbers() {
-        embers.forEach((em, i) => {
-          em.life++;
-          em.y  -= em.vy;
-          em.x  += em.vx + Math.sin(em.life * 0.06 + i) * 0.25;
-
-          const ratio   = em.life / em.maxLife;
-          const opacity = em.opac * (1 - ratio) * 0.65;
-
-          if (em.life >= em.maxLife || em.y < -10) {
-            embers[i] = newEmber(false);
-            return;
-          }
-
-          // Soft glow halo
-          const glow = ctx.createRadialGradient(em.x, em.y, 0, em.x, em.y, em.r * 4);
-          glow.addColorStop(0,   `hsla(${em.hue}, 100%, 72%, ${opacity})`);
-          glow.addColorStop(0.4, `hsla(${em.hue},  95%, 55%, ${opacity * 0.5})`);
-          glow.addColorStop(1,   `hsla(${em.hue},  90%, 40%, 0)`);
-          ctx.beginPath();
-          ctx.arc(em.x, em.y, em.r * 4, 0, Math.PI * 2);
-          ctx.fillStyle = glow;
-          ctx.fill();
-
-          // Bright core
-          ctx.beginPath();
-          ctx.arc(em.x, em.y, em.r, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${em.hue + 25}, 100%, 85%, ${Math.min(opacity * 2, 0.9)})`;
-          ctx.fill();
-        });
-      }
-
-      /* ── Animation loop ────────────────────────── */
-      let t = 0;
-      function loop() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        t += 0.016;
-        drawFlames(t);
-        drawEmbers();
-        requestAnimationFrame(loop);
-      }
-      loop();
+      return pal;
     })();
+
+    function seedFire() {
+      for (let x = 0; x < FIRE_W; x++) {
+        fireMap[(FIRE_H - 1) * FIRE_W + x] = 210 + (Math.random() * 46 | 0);
+      }
+    }
+
+    function stepFire() {
+      // Re-seed bottom row
+      for (let x = 0; x < FIRE_W; x++) {
+        if (Math.random() < 0.40) {
+          fireMap[(FIRE_H - 1) * FIRE_W + x] = 195 + (Math.random() * 61 | 0);
+        }
+      }
+      // Propagate upward with wind drift
+      for (let y = 0; y < FIRE_H - 1; y++) {
+        for (let x = 0; x < FIRE_W; x++) {
+          const drift = (Math.random() * 3 | 0) - 1;
+          const srcX  = (x + drift + FIRE_W) % FIRE_W;
+          const decay = Math.random() * 4 | 0;
+          const below = fireMap[(y + 1) * FIRE_W + srcX];
+          fireMap[y * FIRE_W + x] = below > decay ? below - decay : 0;
+        }
+      }
+    }
+
+    function renderFireTexture() {
+      const d = imgData.data;
+      for (let i = 0; i < FIRE_W * FIRE_H; i++) {
+        const pi    = fireMap[i] * 4;
+        d[i * 4]     = firePalette[pi];
+        d[i * 4 + 1] = firePalette[pi + 1];
+        d[i * 4 + 2] = firePalette[pi + 2];
+        d[i * 4 + 3] = firePalette[pi + 3];
+      }
+      offCtx.putImageData(imgData, 0, 0);
+
+      const dH = canvas.height * 0.30;
+      ctx.save();
+      ctx.imageSmoothingEnabled  = true;
+      ctx.imageSmoothingQuality  = 'high';
+      ctx.filter = 'blur(3px)';
+      ctx.drawImage(offCanvas, 0, canvas.height - dH, canvas.width, dH);
+      ctx.restore();
+    }
+
+    /* ── Base heat glow ─────────────────────────────── */
+    function drawBaseGlow() {
+      const W = canvas.width, H = canvas.height;
+      const g = ctx.createLinearGradient(0, H, 0, H * 0.55);
+      g.addColorStop(0,    'rgba(190, 40,  0, 0.20)');
+      g.addColorStop(0.25, 'rgba(255, 75,  0, 0.12)');
+      g.addColorStop(0.55, 'rgba(255,140,  0, 0.06)');
+      g.addColorStop(1,    'rgba(255,200,  0, 0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, H * 0.55, W, H * 0.45);
+    }
+
+    /* ── Bezier flame tongues ────────────────────────── */
+    const TONGUE_COUNT = 24;
+    const tongues = Array.from({ length: TONGUE_COUNT }, (_, i) => ({
+      x:      (i / (TONGUE_COUNT - 1)) * 1.12 - 0.06,
+      phase:  Math.random() * Math.PI * 2,
+      speed:  Math.random() * 1.3 + 0.5,
+      height: Math.random() * 0.16 + 0.06,
+      width:  Math.random() * 0.065 + 0.035,
+    }));
+
+    function drawFlames(t) {
+      const W = canvas.width, H = canvas.height;
+
+      [
+        { hMult: 1.00, opacBase: 0.20, colorBase: [190, 40, 0],  colorMid: [255, 90, 0],  colorTop: [255,180,30] },
+        { hMult: 0.70, opacBase: 0.16, colorBase: [230, 60, 0],  colorMid: [255,130, 0],  colorTop: [255,220,60] },
+        { hMult: 0.42, opacBase: 0.12, colorBase: [255, 90, 0],  colorMid: [255,190, 20], colorTop: [255,245,100] },
+      ].forEach(({ hMult, opacBase, colorBase, colorMid, colorTop }) => {
+        tongues.forEach(fl => {
+          const cx   = fl.x * W;
+          const flk  = Math.sin(t * fl.speed + fl.phase) * 0.35
+                     + Math.sin(t * fl.speed * 1.8 + fl.phase + 1) * 0.12;
+          const h    = (fl.height + flk * 0.04) * H * hMult;
+          const hw   = fl.width * W;
+          const flkX = Math.sin(t * fl.speed * 0.85 + fl.phase) * hw * 0.38;
+
+          const grad = ctx.createLinearGradient(cx, H, cx, H - h);
+          grad.addColorStop(0,    `rgba(${colorBase[0]},${colorBase[1]},${colorBase[2]}, ${opacBase})`);
+          grad.addColorStop(0.35, `rgba(${colorMid[0]}, ${colorMid[1]}, ${colorMid[2]},  ${opacBase * 0.72})`);
+          grad.addColorStop(0.68, `rgba(${colorTop[0]}, ${colorTop[1]}, ${colorTop[2]},  ${opacBase * 0.40})`);
+          grad.addColorStop(1,    'rgba(255,245,180, 0)');
+
+          ctx.beginPath();
+          ctx.moveTo(cx - hw, H);
+          ctx.bezierCurveTo(
+            cx - hw * 0.55, H - h * 0.32,
+            cx + flkX - hw * 0.18, H - h * 0.70,
+            cx + flkX, H - h
+          );
+          ctx.bezierCurveTo(
+            cx + flkX + hw * 0.18, H - h * 0.70,
+            cx + hw * 0.55, H - h * 0.32,
+            cx + hw, H
+          );
+          ctx.fillStyle = grad;
+          ctx.fill();
+        });
+      });
+    }
+
+    /* ── Ember particles ────────────────────────────── */
+    const EMBER_COUNT = 180;
+
+    function newEmber(spread) {
+      return {
+        x:       Math.random() * canvas.width,
+        y:       canvas.height + (spread ? Math.random() * canvas.height : Math.random() * 80),
+        r:       Math.random() * 2.4 + 0.5,
+        vy:      Math.random() * 1.6 + 0.35,
+        vx:      (Math.random() - 0.5) * 0.65,
+        life:    0,
+        maxLife: Math.random() * 240 + 80,
+        hue:     Math.random() * 35 + 5,   // 5–40 → deep orange to amber
+        opac:    Math.random() * 0.55 + 0.35,
+      };
+    }
+
+    const embers = Array.from({ length: EMBER_COUNT }, () => newEmber(true));
+
+    function drawEmbers() {
+      embers.forEach((em, i) => {
+        em.life++;
+        em.y  -= em.vy;
+        em.x  += em.vx + Math.sin(em.life * 0.055 + i) * 0.28;
+
+        if (em.life >= em.maxLife || em.y < -12) {
+          embers[i] = newEmber(false);
+          return;
+        }
+
+        const ratio   = em.life / em.maxLife;
+        const opacity = em.opac * (1 - ratio) * 0.70;
+
+        // Glow halo
+        const glow = ctx.createRadialGradient(em.x, em.y, 0, em.x, em.y, em.r * 4.5);
+        glow.addColorStop(0,   `hsla(${em.hue}, 100%, 72%, ${opacity})`);
+        glow.addColorStop(0.4, `hsla(${em.hue},  95%, 55%, ${opacity * 0.5})`);
+        glow.addColorStop(1,   `hsla(${em.hue},  90%, 40%, 0)`);
+        ctx.beginPath();
+        ctx.arc(em.x, em.y, em.r * 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = glow;
+        ctx.fill();
+
+        // Bright core
+        ctx.beginPath();
+        ctx.arc(em.x, em.y, em.r, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${em.hue + 28}, 100%, 88%, ${Math.min(opacity * 2.2, 0.92)})`;
+        ctx.fill();
+      });
+    }
+
+    /* ── Smoke wisps ────────────────────────────────── */
+    const SMOKE_COUNT = 28;
+
+    function newSmoke() {
+      return {
+        x:        Math.random() * canvas.width,
+        y:        canvas.height + Math.random() * 80,
+        r:        Math.random() * 14 + 8,
+        vx:       (Math.random() - 0.5) * 0.45,
+        vy:       Math.random() * 0.9 + 0.3,
+        life:     0,
+        maxLife:  220 + Math.random() * 160,
+        rot:      Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.006,
+      };
+    }
+
+    const smokes = Array.from({ length: SMOKE_COUNT }, () => newSmoke());
+
+    function drawSmoke() {
+      smokes.forEach((sm, i) => {
+        sm.life++;
+        sm.y   -= sm.vy;
+        sm.x   += sm.vx + Math.sin(sm.life * 0.025 + i) * 0.35;
+        sm.r   += 0.055;
+        sm.rot += sm.rotSpeed;
+
+        if (sm.life >= sm.maxLife || sm.y < -80) {
+          smokes[i] = newSmoke();
+          return;
+        }
+
+        const ratio   = sm.life / sm.maxLife;
+        const opacity = 0.055 * (1 - ratio) * Math.min(1, ratio * 4);
+
+        ctx.save();
+        ctx.translate(sm.x, sm.y);
+        ctx.rotate(sm.rot);
+
+        const g = ctx.createRadialGradient(0, 0, 0, 0, 0, sm.r);
+        g.addColorStop(0,   `rgba(110, 90, 80, ${opacity})`);
+        g.addColorStop(0.5, `rgba( 90, 75, 72, ${opacity * 0.55})`);
+        g.addColorStop(1,   `rgba( 70, 65, 65, 0)`);
+
+        ctx.beginPath();
+        ctx.arc(0, 0, sm.r, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+        ctx.restore();
+      });
+    }
+
+    /* ── Mouse cursor ember trail ───────────────────── */
+    const cursorEmbers = [];
+    let mouseX = -1000, mouseY = -1000;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      // Spawn 1–2 embers per move event
+      const count = Math.random() < 0.5 ? 2 : 1;
+      for (let k = 0; k < count; k++) {
+        if (cursorEmbers.length < 120) {
+          cursorEmbers.push({
+            x:       e.clientX + (Math.random() - 0.5) * 12,
+            y:       e.clientY + (Math.random() - 0.5) * 12,
+            r:       Math.random() * 2.2 + 0.6,
+            vx:      (Math.random() - 0.5) * 1.8,
+            vy:      -(Math.random() * 2.8 + 0.4),
+            life:    0,
+            maxLife: 22 + Math.random() * 22,
+            hue:     10 + Math.random() * 40,
+          });
+        }
+      }
+    });
+
+    function drawCursorEmbers() {
+      for (let i = cursorEmbers.length - 1; i >= 0; i--) {
+        const em = cursorEmbers[i];
+        em.life++;
+        em.x  += em.vx;
+        em.y  += em.vy;
+        em.vy -= 0.04;
+        em.vx *= 0.96;
+
+        if (em.life >= em.maxLife) { cursorEmbers.splice(i, 1); continue; }
+
+        const ratio   = em.life / em.maxLife;
+        const opacity = (1 - ratio) * 0.85;
+
+        const glow = ctx.createRadialGradient(em.x, em.y, 0, em.x, em.y, em.r * 5);
+        glow.addColorStop(0,   `hsla(${em.hue}, 100%, 70%, ${opacity * 0.65})`);
+        glow.addColorStop(0.5, `hsla(${em.hue},  90%, 55%, ${opacity * 0.30})`);
+        glow.addColorStop(1,   `hsla(${em.hue},  80%, 40%, 0)`);
+        ctx.beginPath();
+        ctx.arc(em.x, em.y, em.r * 5, 0, Math.PI * 2);
+        ctx.fillStyle = glow;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(em.x, em.y, em.r, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${em.hue + 25}, 100%, 92%, ${opacity})`;
+        ctx.fill();
+      }
+    }
+
+    /* ── Main loop ───────────────────────────────────── */
+    let t = 0;
+    function loop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      t += 0.016;
+
+      drawBaseGlow();
+      stepFire();
+      renderFireTexture();
+      drawSmoke();
+      drawFlames(t);
+      drawEmbers();
+      drawCursorEmbers();
+
+      requestAnimationFrame(loop);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    loop();
+  })();
   </script>
 
 </body>

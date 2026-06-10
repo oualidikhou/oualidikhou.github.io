@@ -4,7 +4,7 @@ title: About
 ---
 
 <section>
-  <h1 class="gradient-text" data-i18n="about.title">About Me</h1>
+  <h1 class="gradient-text section-title" data-i18n="about.title">About Me</h1>
 
   <p class="hero-bio" data-i18n="about.p1">
     I am a PhD student in Engineering Sciences at Aix-Marseille University, conducting my research at the IUSTI Laboratory. My work focuses on the study of confined fires, combining experimental investigations and numerical modeling to better understand fire dynamics and improve prediction capabilities.
@@ -22,11 +22,11 @@ title: About
   <div style="margin-top:2rem;">
     <h3 style="color:var(--accent-sky); margin-bottom:1.2rem;" data-i18n="about.edu.title">Education</h3>
     <ul style="list-style:none; padding:0;">
-      <li class="edu-item" style="border-color:var(--accent-sky); margin-bottom:1rem;">
+      <li class="edu-item" style="border-color:var(--fire-amber); margin-bottom:1rem;">
         <span data-i18n="about.edu.phd">PhD in Engineering Sciences – Fluid Mechanics and Physics</span><br>
         <span style="color:var(--text-secondary); font-size:0.92rem;" data-i18n="about.edu.phd.sub">Aix-Marseille University · 2023 — Present</span>
       </li>
-      <li class="edu-item" style="border-color:rgba(56,189,248,0.3);">
+      <li class="edu-item" style="border-color:rgba(255,102,0,0.35);">
         <span data-i18n="about.edu.master">Master's Degree in Fire Science and Fire Safety Engineering</span><br>
         <span style="color:var(--text-secondary); font-size:0.92rem;" data-i18n="about.edu.master.sub">Aix-Marseille University · 2021 — 2023</span>
       </li>

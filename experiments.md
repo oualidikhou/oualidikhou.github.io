@@ -4,7 +4,7 @@ title: Experimentations
 ---
 
 <section>
-  <h1 class="gradient-text" data-i18n="exp.title">Experimental Gallery</h1>
+  <h1 class="gradient-text section-title" data-i18n="exp.title">Experimental Gallery</h1>
   <p class="hero-bio" data-i18n="exp.intro">
     A selection of images showcasing my experimental work across fire safety, fluid mechanics, and thermal studies.
   </p>

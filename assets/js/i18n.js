@@ -14,11 +14,15 @@ const translations = {
     "nav.experiments": "Experiments",
 
     /* ── Home / Hero ── */
+    "hero.badge":      "PhD Student · Volunteer Firefighter",
     "hero.subtitle":   "PhD Student in Engineering Sciences – Fluid Mechanics & Physics<br/>IUSTI Laboratory, Aix-Marseille University",
     "hero.bio1":       "I am a PhD student specializing in numerical and experimental studies of confined fires, with applications to firefighter interventions. My research focuses on the prediction of fire curves using advanced data assimilation techniques and computational modeling, combining fluid mechanics, heat transfer, and applied mathematics.",
     "hero.bio2":       "Beyond research, I am committed to sharing my knowledge through mentoring, scientific publications, conferences, and applied projects that have a tangible impact on fire safety.",
     "hero.contact":    "Contact Me",
     "hero.cv":         "CV",
+    "hero.stat.years": "Years PhD",
+    "hero.stat.method":"Method",
+    "hero.stat.lab":   "Laboratory",
 
     /* ── CV Modal ── */
     "cv.title":        "Curriculum Vitae",
@@ -105,11 +109,15 @@ const translations = {
     "nav.experiments": "Expériences",
 
     /* ── Home / Hero ── */
-    "hero.subtitle":   "Doctorant en Sciences de l'Ingénieur – Mécanique des Fluides & Physique<br/>Laboratoire IUSTI, Aix-Marseille Université",
-    "hero.bio1":       "Je suis doctorant spécialisé dans l'étude numérique et expérimentale des incendies confinés, avec des applications pour les interventions des sapeurs-pompiers. Mes recherches portent sur la prédiction des courbes d'incendie à l'aide de techniques avancées d'assimilation de données et de modélisation numérique, en combinant la mécanique des fluides, le transfert de chaleur et les mathématiques appliquées.",
-    "hero.bio2":       "Au-delà de la recherche, je m’engage à partager mes connaissances par le mentorat, les publications scientifiques, les conférences et des projets appliqués qui ont un impact concret sur la sécurité incendie.",
+    "hero.badge":      "Doctorant · Sapeur-Pompier Volontaire",
+    "hero.subtitle":   "Doctorant en Sciences de l’Ingénieur – Mécanique des Fluides & Physique<br/>Laboratoire IUSTI, Aix-Marseille Université",
+    "hero.bio1":       "Doctorant spécialisé dans l’étude numérique et expérimentale des incendies confinés, je développe des outils de prédiction destinés à améliorer les interventions des sapeurs-pompiers. Mes travaux conjuguent mécanique des fluides, transfert de chaleur et mathématiques appliquées, au service de la modélisation et de l’assimilation de données.",
+    "hero.bio2":       "Au-delà de la recherche, je m’attache à transmettre mes connaissances — par le mentorat, les publications scientifiques, les conférences et des projets appliqués — au service d’une sécurité incendie plus efficace.",
     "hero.contact":    "Me contacter",
     "hero.cv":         "CV",
+    "hero.stat.years": "Années de thèse",
+    "hero.stat.method":"Méthode",
+    "hero.stat.lab":   "Laboratoire",
 
     /* ── CV Modal ── */
     "cv.title":        "Curriculum Vitae",
@@ -117,10 +125,10 @@ const translations = {
 
     /* ── About ── */
     "about.title":     "À propos de moi",
-    "about.p1":        "Je suis doctorant en Sciences de l'Ingénieur à Aix-Marseille Université, où je mène mes recherches au laboratoire IUSTI. Mes travaux portent sur l'étude des incendies confinés, en combinant des investigations expérimentales et une modélisation numérique pour mieux comprendre la dynamique des incendies et améliorer les capacités de prédiction.",
-    "about.p2":        "Au-delà de mes recherches académiques, je suis également sapeur-pompier volontaire. Cette expérience de terrain façonne fortement mon approche scientifique, car je cherche à combler le fossé entre la modélisation théorique et les scénarios réels d'intervention incendie.",
-    "about.p3":        "Mes intérêts de recherche incluent la dynamique des incendies, l'assimilation de données et la modélisation prédictive, avec pour objectif de développer des outils pouvant soutenir des opérations de lutte contre l'incendie plus sûres et plus efficaces.",
-    "about.p4":        "Plus largement, je suis animé par le désir de connecter la science et la pratique, en contribuant à la fois à la compréhension fondamentale et aux applications pratiques de la sécurité incendie.",
+    "about.p1":        "Je suis doctorant en Sciences de l'Ingénieur à Aix-Marseille Université, au laboratoire IUSTI. Mes travaux portent sur les incendies confinés : en conjuguant études expérimentales et modélisation numérique, je cherche à mieux comprendre la dynamique du feu et à renforcer les capacités de prédiction.",
+    "about.p2":        "Sapeur-pompier volontaire en parallèle de mes recherches, cette expérience de terrain nourrit profondément ma démarche scientifique : je cherche à rapprocher la modélisation théorique des réalités du terrain lors des interventions incendie.",
+    "about.p3":        "Mes centres d'intérêt couvrent la dynamique des incendies, l'assimilation de données et la modélisation prédictive, avec l'ambition de concevoir des outils concrets au service de la sécurité des interventions.",
+    "about.p4":        "Plus largement, je suis animé par la volonté d'articuler science et terrain, en contribuant aussi bien à la compréhension fondamentale des phénomènes qu'aux applications pratiques de la sécurité incendie.",
     "about.edu.title": "Formation",
     "about.edu.phd":   "Doctorat en Sciences de l'Ingénieur – Mécanique des Fluides et Physique",
     "about.edu.phd.sub":    "Aix-Marseille Université · 2023 — Présent",
@@ -138,14 +146,14 @@ const translations = {
 
     /* ── Talks ── */
     "talks.title": "Conférences & Présentations",
-    "talks.intro": "Le partage de la recherche lors de conférences et séminaires est une part essentielle de mon travail académique. Voici quelques présentations clés sur la dynamique des incendies, la modélisation numérique et l'assimilation de données.",
+    "talks.intro": "Partager la recherche en conférences et séminaires est au cœur de mon activité académique. Voici quelques présentations sur la dynamique des incendies, la modélisation numérique et l'assimilation de données.",
     "talks.1.title": "Application de la méthode 4D-Var incrémentale pour la prédiction en temps réel de la dynamique oscillatoire d'un incendie confiné",
     "talks.1.date":  "Octobre 2024 · Symposium Européen sur la Science de la Sécurité Incendie",
     "talks.1.desc":  "Présentation de recherches sur la prédiction en temps réel de la dynamique oscillatoire des incendies confinés à l'aide de l'assimilation de données 4D-Var incrémentale, combinée à un modèle simplifié de réacteur bien mélangé et à des données expérimentales de la littérature.",
 
     /* ── Team ── */
     "team.title":     "Équipe de recherche & Collaborateurs",
-    "team.intro":     "La recherche repose sur la collaboration et le partage d’expertise. J’ai la chance de travailler avec des équipes brillantes au sein du Laboratoire IUSTI et du CERISC à l’ENSOSP, en explorant des approches innovantes dans la dynamique des incendies, la sécurité et la réponse aux situations d’urgence. Ces collaborations me permettent de combiner modélisation numérique, études expérimentales et recherches appliquées afin d’avoir un impact concret sur la formation des sapeurs-pompiers et la sécurité civile.",
+    "team.intro":     "La recherche se construit sur la collaboration et le partage d’expertise. J’ai la chance d’évoluer au sein d’équipes remarquables — au Laboratoire IUSTI et au CERISC de l’ENSOSP — autour d’approches innovantes en dynamique des incendies, sécurité et gestion des situations d’urgence. Ces collaborations me permettent de croiser modélisation numérique, études expérimentales et recherche appliquée pour contribuer concrètement à la formation des sapeurs-pompiers et à la sécurité civile.",
     "team.supervisors": "Directeurs de thèse",
     "team.sup1.name": "Prof. Olivier Vauquelin",
     "team.sup1.role": "Directeur de recherche, IUSTI",
@@ -156,7 +164,7 @@ const translations = {
     "team.lab.desc.cerisc": "Le CERISC (Centre d’études et de recherche interdisciplinaires sur la sécurité civile) à l’ENSOSP se concentre sur la formation des sapeurs-pompiers, la sécurité civile et la réponse aux situations d’urgence.",
     /* ── Teaching ── */
     "teaching.title": "Enseignement & Mentorat",
-    "teaching.intro": "Passionné par l'éducation, je contribue activement aux activités d'enseignement et de mentorat à Aix-Marseille Université et dans les programmes de formation des sapeurs-pompiers.",
+    "teaching.intro": "Passionné de pédagogie, je m'investis pleinement dans l'enseignement et l'encadrement, à Aix-Marseille Université comme dans les programmes de formation des sapeurs-pompiers.",
     "teaching.uni.title": "Enseignement universitaire",
     "teaching.uni.course": "BUT Hygiène, Sécurité & Environnement (HSE)",
     "teaching.uni.detail": "Contrat d'enseignement (CME) · Aix-Marseille Université · 2024–2026 · 64 h/an<br/>Préparation et dispense de travaux dirigés (TD) et travaux pratiques (TP) favorisant la participation des étudiants.<br/>Soutien individuel et accompagnement des étudiants dans leur progression.<br/>Développement de méthodes pédagogiques pour faciliter la compréhension et l'application des concepts scientifiques.",
@@ -164,7 +172,7 @@ const translations = {
     "teaching.ff.school": "École Nationale Supérieure des Officiers de Sapeurs-Pompiers",
     "teaching.ff.detail": "Programme de formation · Aix-en-Provence · 2023–2026<br/>Conception et dispense de cours sur la méthodologie de la recherche scientifique.<br/>Encadrement individuel et collectif des stagiaires, guidant la collecte de données, l'analyse et la rédaction de rapports.<br/>Développement de compétences pédagogiques et organisationnelles pour transmettre des connaissances scientifiques et pratiques.",
     "teaching.mentorship.title": "Mentorat",
-    "teaching.mentorship.desc":  "J'encadre des étudiants en licence et en master sur des projets de recherche, incluant des études numériques et expérimentales. Je les guide dans la modélisation numérique, l'analyse de données, la conception expérimentale et la rédaction scientifique, en mettant l'accent sur un mentorat individualisé.",
+    "teaching.mentorship.desc":  "J'encadre des étudiants de licence et de master sur des projets de recherche alliant numérique et expérimental. Je les accompagne dans la modélisation, l'analyse de données, la conception expérimentale et la rédaction scientifique, en privilégiant un suivi individualisé et une dynamique de travail collaborative.",
 
     /* ── Experiments ── */
     "exp.title": "Galerie Expérimentale",

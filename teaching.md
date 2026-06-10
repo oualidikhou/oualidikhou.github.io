@@ -4,7 +4,7 @@ title: Teaching
 ---
 
 <section>
-  <h1 class="gradient-text" data-i18n="teaching.title">Teaching &amp; Mentorship</h1>
+  <h1 class="gradient-text section-title" data-i18n="teaching.title">Teaching &amp; Mentorship</h1>
   <p class="hero-bio" data-i18n="teaching.intro">
     Passionate about education, I actively contribute to teaching and mentoring activities at Aix-Marseille University and in professional firefighter training programs.
   </p>
